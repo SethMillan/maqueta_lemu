@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <script
     type="module"
@@ -9,36 +10,45 @@
   </script>
 
   <style>
-    body{
-      margin:0;
-      overflow:hidden;
-    }
+    body { margin: 0; overflow: hidden; }
+    model-viewer { width: 100vw; height: 100vh; background: #f5f5f5; }
 
-    model-viewer{
-      width:100vw;
-      height:100vh;
-      background:#f5f5f5;
+    /* Botón AR personalizado para que se vea claro */
+    .ar-btn {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 24px;
+      background: #1a73e8;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      font-size: 16px;
+      cursor: pointer;
     }
   </style>
 </head>
-
 <body>
 
   <model-viewer
-    src="/maqueta.glb"
+    src="./maqueta.glb"
+    ios-src="./maqueta.usdz"
 
     ar
-    ar-modes="scene-viewer webxr quick-look"
+    ar-modes="webxr scene-viewer quick-look"
     ar-scale="fixed"
     ar-placement="floor"
 
     camera-controls
     auto-rotate
-
     shadow-intensity="1"
-
     environment-image="neutral"
   >
+    <!-- Botón visible que activa AR -->
+    <button slot="ar-button" class="ar-btn">
+      📍 Ver en mi espacio
+    </button>
   </model-viewer>
 
 </body>
